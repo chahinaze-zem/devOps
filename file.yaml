@@ -1,0 +1,15 @@
+- name: copy test files to othe machine
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: copy test file
+      copy:
+        src: files/chahinaze.txt
+        dest: /home/student/ansibletest/files/chahinaze.txt
+        mode: 777
+    - name: install pkg
+      become: true
+      apt:
+        name: consul
+        state: absent
+  
